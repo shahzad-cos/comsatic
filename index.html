@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shahzad Cosmetic | Beauty & Care</title>
+<style>
+:root{
+ --pink:#b85f7d;--light:#f8eef0;--cream:#fffaf7;
+ --dark:#291c22;--muted:#88777e;--line:#f0e3e6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--dark);
+font-family:Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1150px,92%);margin:auto}
+.topline{background:var(--dark);color:white;text-align:center;
+padding:9px;font-size:11px;letter-spacing:2px}
+header{background:#fffaf7eF;position:sticky;top:0;z-index:10;
+border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+nav{height:75px;display:flex;align-items:center;
+justify-content:space-between;gap:15px}
+.brand{font: bold 25px Georgia}
+.brand small{display:block;font:9px Arial;letter-spacing:3px;
+color:var(--pink);margin-top:5px}
+.links{display:flex;gap:25px;font-size:12px;text-transform:uppercase}
+.actions{display:flex;align-items:center;gap:10px}
+.btn{background:var(--dark);color:white;border:0;padding:13px 20px;
+font-size:11px;letter-spacing:1px;text-transform:uppercase;
+border-radius:3px}
+.btn:hover{background:var(--pink)}
+.lightbtn{background:white;color:var(--dark);border:1px solid var(--line)}
+.admin-link{border:0;background:none;color:#a9949c;font-size:11px}
+.hero{background:linear-gradient(110deg,#fbefef,#f4dfe5);
+padding:65px 0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;
+align-items:center;gap:30px}
+.eyebrow{color:var(--pink);font-size:11px;letter-spacing:3px;
+text-transform:uppercase}
+.hero h1{font:clamp(42px,6vw,70px)/1.05 Georgia;
+font-weight:normal;margin:18px 0}
+.hero h1 em{color:var(--pink)}
+.hero p{color:var(--muted);line-height:1.8;font-size:14px}
+.hero-art{height:340px;display:grid;place-items:center}
+.circle{width:290px;height:290px;border-radius:50%;
+background:linear-gradient(145deg,#f4cbd5,#d98fa5);
+display:grid;place-items:center;box-shadow:0 25px 60px #b85f7d40}
+.bottle{width:100px;height:190px;border-radius:18px;
+background:linear-gradient(90deg,#fff,#d8b8aa,#fff);
+box-shadow:12px 15px 20px #68404a50;position:relative}
+.bottle:before{content:"";position:absolute;top:-28px;left:32px;
+width:36px;height:30px;background:#b58a78}
+.bottle:after{content:"SH";position:absolute;top:75px;left:0;
+width:100%;text-align:center;font:26px Georgia;color:#a45e77}
+.trust{padding:20px;border-bottom:1px solid var(--line);
+text-align:center;font-size:11px;letter-spacing:2px;color:var(--muted)}
+.section{padding:65px 0}
+.heading{text-align:center;margin-bottom:30px}
+.heading h2{font:40px Georgia;font-weight:normal;margin:12px}
+.heading p{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;justify-content:space-between;gap:12px;
+flex-wrap:wrap;margin:25px 0}
+.categories{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 15px;border:1px solid var(--line);
+background:white;border-radius:25px;font-size:11px}
+.chip.active{background:var(--dark);color:white}
+.search{padding:10px;border:1px solid var(--line);min-width:200px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product{background:white;border:1px solid var(--line);transition:.2s}
+.product:hover{transform:translateY(-4px);box-shadow:0 15px 35px #59313c12}
+.photo{height:210px;background:#f7e9ed;display:grid;place-items:center;
+overflow:hidden;color:#bd8a9b;font:italic 22px Georgia}
+.photo img{width:100%;height:100%;object-fit:cover}
+.info{padding:15px}
+.cat{font-size:9px;color:var(--pink);letter-spacing:2px;text-transform:uppercase}
+.info h3{font:19px Georgia;font-weight:normal;margin:8px 0}
+.desc{font-size:11px;color:var(--muted);line-height:1.5;min-height:32px}
+.product-bottom{display:flex;justify-content:space-between;
+align-items:center;margin-top:15px}
+.price{font-weight:bold;font-size:14px}
+.add{border:0;border-radius:50%;width:35px;height:35px;
+background:#f6e5ea;color:#a14f6c;font-size:22px}
+.stock{font-size:10px;color:var(--muted);margin-top:8px}
+.promo{background:var(--dark);color:white;padding:45px 0}
+.promo-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.promo h2{font:32px Georgia;font-weight:normal;margin:0 0 10px}
+.promo p{font-size:12px;color:#d9cbd0}
+.promo .btn{background:#e9bac8;color:var(--dark)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-art{background:#f3dfe5;min-height:250px;display:grid;
+place-items:center;text-align:center;font:36px Georgia;color:#a45e77}
+.about p{color:var(--muted);font-size:13px;line-height:1.9}
+footer{background:#241b20;color:white;padding:35px 0}
+footer p{font-size:12px;color:#c8b9bf;line-height:1.8}
+footer a{color:#e8c2ce}
+.cart{position:fixed;right:0;top:0;width:min(400px,100%);
+height:100%;background:white;z-index:30;padding:22px;
+transform:translateX(110%);transition:.3s;display:flex;flex-direction:column;
+box-shadow:-10px 0 40px #0002}
+.cart.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center}
+.cart-head h2{font:28px Georgia;font-weight:normal}
+.close{border:0;background:none;font-size:24px}
+.cart-items{overflow:auto;flex:1}
+.cart-row{display:flex;justify-content:space-between;
+padding:13px 0;border-bottom:1px solid var(--line);font-size:12px;gap:10px}
+.qty button{background:white;border:1px solid var(--line);padding:3px 8px}
+.cart-total{display:flex;justify-content:space-between;padding:18px 0}
+.count{background:var(--pink);color:white;border-radius:50%;
+padding:3px 6px;font-size:10px}
+.modal{display:none;position:fixed;inset:0;background:#0009;
+z-index:50;align-items:center;justify-content:center;padding:15px}
+.modal.show{display:flex}
+.modalbox{background:white;padding:28px;width:min(420px,100%);position:relative}
+.modalbox h2{font:30px Georgia;font-weight:normal}
+.field{display:grid;gap:6px;margin:12px 0}
+.field label{font-size:10px;letter-spacing:1px;color:var(--muted)}
+.field input,.field textarea,.field select{
+width:100%;padding:12px;border:1px solid var(--line);background:white}
+.error{color:#b33;font-size:11px}
+.admin{display:none;position:fixed;inset:0;background:#f8f1f1;
+z-index:70;overflow:auto}
+.admin.show{display:block}
+.admin-head{background:var(--dark);color:white;padding:18px}
+.admin-head .wrap{display:flex;justify-content:space-between;align-items:center}
+.admin-content{width:min(1000px,94%);margin:25px auto}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.tab{border:1px solid var(--line);background:white;padding:10px 15px;font-size:11px}
+.tab.active{background:var(--dark);color:white}
+.panel{display:none;background:white;padding:22px;border:1px solid var(--line)}
+.panel.active{display:block}
+.panel h3{font:24px Georgia;font-weight:normal;margin-top:0}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}
+.full{grid-column:1/-1}
+.notice{background:#fff4e6;padding:12px;font-size:11px;
+line-height:1.6;border-left:3px solid #c69a63;margin-bottom:18px}
+.listrow{display:flex;justify-content:space-between;align-items:center;
+padding:12px 0;border-bottom:1px solid var(--line);font-size:12px;gap:10px}
+.smallbtn{padding:7px 10px;background:white;border:1px solid var(--line);
+font-size:10px;margin-left:4px}
+.danger{color:#b33}
+@media(max-width:800px){.products{grid-template-columns:repeat(2,1fr)}
+.links{gap:10px}.hero-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+ nav{height:65px}.brand{font-size:20px}.links{display:none}
+ .hero{padding:35px 0}.hero-grid{grid-template-columns:1fr;text-align:center}
+ .hero-art{height:250px}.circle{width:220px;height:220px}
+ .bottle{transform:scale(.75)}.products{gap:10px}
+ .photo{height:155px}.info{padding:11px}.info h3{font-size:16px}
+ .section{padding:45px 0}.heading h2{font-size:33px}
+ .promo-inner{display:block;text-align:center}.promo .btn{margin-top:15px}
+ .about{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}
+ .full{grid-column:auto}.panel{padding:14px}
+}
+</style>
+</head>
+<body>
+<div class="topline">A LITTLE LUXURY, A LOT OF CONFIDENCE</div>
+<header>
+<div class="wrap">
+<nav>
+<a href="#" class="brand">SHAHZAD COSMETIC
+<small>BEAUTY • CARE • CONFIDENCE</small></a>
+<div class="links">
+<a href="#home">Home</a><a href="#shop">Shop</a>
+<a href="#about">Our Story</a><a href="#contact">Contact</a>
+</div>
+<div class="actions">
+<button class="btn lightbtn" onclick="toggleCart()">♡ <span id="count">0</span></button>
+<button class="admin-link" onclick="openLogin()">Admin</button>
+</div>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">YOUR BEAUTY, YOUR SIGNATURE</div>
+<h1>Feel beautiful.<br><em>Be unforgettable.</em></h1>
+<p>Discover beauty and personal-care favourites selected to make your everyday routine feel special.</p>
+<a class="btn" href="#shop">Explore Collection</a>
+</div>
+<div class="hero-art"><div class="circle"><div class="bottle"></div></div></div>
+</div>
+</section>
+
+<div class="trust">✧ CURATED BEAUTY PICKS　　♡ EVERYDAY ESSENTIALS　　✦ YOUR DAILY GLOW</div>
+
+<section class="section" id="shop">
+<div class="wrap">
+<div class="heading">
+<div class="eyebrow">THE COLLECTION</div>
+<h2>Shop Your Favourites</h2>
+<p>Find the little things that make you feel your best.</p>
+</div>
+<div class="toolbar">
+<div class="categories" id="categories"></div>
+<input class="search" id="search" placeholder="Search products..." oninput="renderProducts()">
+</div>
+<div class="products" id="products"></div>
+</div>
+</section>
+
+<section class="promo"><div class="wrap promo-inner">
+<div><h2>Your next favourite is waiting.</h2>
+<p>Browse the collection and place your order with ease.</p></div>
+<a href="#shop" class="btn">Shop Now</a>
+</div></section>
+
+<section class="section" id="about"><div class="wrap about">
+<div class="about-art">SHAHZAD<br>COSMETIC</div>
+<div><div class="eyebrow">A LITTLE ABOUT US</div>
+<h2 style="font:40px Georgia;font-weight:normal">Beauty is in the details.</h2>
+<p>At Shahzad Cosmetic, we believe that feeling good starts with the little things. Explore a thoughtful collection of beauty and personal-care products in one convenient place.</p>
+<p>Choose your favourites, add them to your basket and send your order through WhatsApp.</p>
+</div></div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+<div class="brand">SHAHZAD COSMETIC</div>
+<p>Beauty • Care • Confidence</p>
+<p>Questions about an order? <a href="https://wa.me/923149975994">Chat with us on WhatsApp</a></p>
+<p>© <span id="year"></span> Shahzad Cosmetic. All rights reserved.</p>
+</div></footer>
+
+<!-- Shopping cart -->
+<div class="cart" id="cart">
+<div class="cart-head"><h2>Your Basket</h2>
+<button class="close" onclick="toggleCart()">×</button></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-total"><b>Total</b><b id="total">Rs 0</b></div>
+<button class="btn" onclick="checkout()">Order on WhatsApp</button>
+</div>
+
+<!-- Admin login -->
+<div class="modal" id="login">
+<div class="modalbox">
+<button class="close" onclick="closeLogin()" style="position:absolute;right:15px;top:10px">×</button>
+<div class="eyebrow">PRIVATE ACCESS</div>
+<h2>Admin Login</h2>
+<p>Enter your dashboard password.</p>
+<div class="field"><label>Password</label>
+<input id="password" type="password" placeholder="Enter password"
+onkeydown="if(event.key==='Enter')verifyLogin()"></div>
+<div class="error" id="loginError"></div>
+<button class="btn" style="width:100%" onclick="verifyLogin()">Unlock Dashboard</button>
+</div></div>
+
+<!-- Admin dashboard -->
+<section class="admin" id="admin">
+<div class="admin-head"><div class="wrap">
+<b style="font:23px Georgia">SHAHZAD COSMETIC — ADMIN</b>
+<button class="btn lightbtn" onclick="closeAdmin()">Back to Store</button>
+</div></div>
+<div class="admin-content">
+<div class="notice"><b>Important:</b> Product data is saved in this browser. Upload product photos to your GitHub repository's <b>images</b> folder, then enter only the filename below, such as lipstick.png. GitHub Pages cannot automatically publish browser changes to other visitors. This password is a convenience lock, not secure authentication.</div>
+<div class="tabs">
+<button class="tab active" onclick="showTab('productsPanel',this)">Products</button>
+<button class="tab" onclick="showTab('categoriesPanel',this)">Categories</button>
+<button class="tab" onclick="showTab('settingsPanel',this)">Settings</button>
+</div>
+
+<div class="panel active" id="productsPanel">
+<h3 id="formTitle">Add New Product</h3>
+<form id="productForm" onsubmit="saveProduct(event)">
+<input type="hidden" id="editId">
+<div class="formgrid">
+<div class="field"><label>Product name *</label>
+<input id="pName" required placeholder="Product name"></div>
+<div class="field"><label>Category *</label>
+<select id="pCategory" required></select></div>
+<div class="field"><label>Price (PKR) *</label>
+<input id="pPrice" type="number" min="0" required></div>
+<div class="field"><label>Quantity *</label>
+<input id="pQty" type="number" min="0" required></div>
+<div class="field full"><label>Product description</label>
+<textarea id="pDesc" rows="3"></textarea></div>
+<div class="field full"><label>Image filename</label>
+<input id="pImage" placeholder="lipstick.png"></div>
+</div>
+<button class="btn">Save Product</button>
+<button type="button" class="btn lightbtn" onclick="resetForm()">Clear</button>
+</form>
+<div id="adminProducts"></div>
+</div>
+
+<div class="panel" id="categoriesPanel">
+<h3>Manage Categories</h3>
+<form onsubmit="addCategory(event)" style="display:flex;gap:10px;flex-wrap:wrap">
+<input id="newCategory" required placeholder="Category name"
+style="padding:12px;border:1px solid var(--line);flex:1;min-width:150px">
+<button class="btn">Add Category</button>
+</form>
+<div id="adminCategories"></div>
+</div>
+
+<div class="panel" id="settingsPanel">
+<h3>Store Settings</h3>
+<div class="field"><label>WhatsApp number (country code, no +)</label>
+<input id="waNumber" value="923149975994"></div>
+<button class="btn" onclick="saveSettings()">Save Settings</button>
+<br><br>
+<button class="btn lightbtn" onclick="exportData()">Export Product Backup</button>
+<button class="btn lightbtn" onclick="resetData()">Reset Demo Data</button>
+</div>
+</div>
+</section>
+
+<script>
+// Password is a client-side convenience lock, not secure authentication.
+const ADMIN_PASSWORD="03119031258Pakistan";
+
+const DEFAULT_CATEGORIES=[
+"Makeup","Skincare","Haircare","Fragrance","Personal Care","Accessories"
+];
+const DEFAULT_PRODUCTS=[
+{id:"demo1",name:"Velvet Matte Lipstick",category:"Makeup",
+price:1250,qty:18,desc:"A beautiful everyday shade with a soft matte finish.",image:""},
+{id:"demo2",name:"Hydrating Face Serum",category:"Skincare",
+price:1850,qty:12,desc:"A lightweight addition to your daily skincare routine.",image:""},
+{id:"demo3",name:"Glow Beauty Kit",category:"Makeup",
+price:2400,qty:8,desc:"Your beauty essentials in one lovely set.",image:""},
+{id:"demo4",name:"Silky Hair Care",category:"Haircare",
+price:1650,qty:15,desc:"A simple care essential for your hair routine.",image:""}
+];
+
+let categories=JSON.parse(localStorage.getItem("sc_categories")||"null")||[...DEFAULT_CATEGORIES];
+let products=JSON.parse(localStorage.getItem("sc_products")||"null")||DEFAULT_PRODUCTS.map(p=>({...p}));
+let cart={};
+let whatsapp=localStorage.getItem("sc_whatsapp")||"923149975994";
+let activeCategory="All";
+
+function saveData(){
+ localStorage.setItem("sc_categories",JSON.stringify(categories));
+ localStorage.setItem("sc_products",JSON.stringify(products));
+}
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
+}
+function money(value){
+ return "Rs "+Number(value||0).toLocaleString("en-PK");
+}
+function renderProducts(){
+ const chips=["All",...categories];
+ document.getElementById("categories").innerHTML=chips.map(c=>
+ `<button class="chip ${activeCategory===c?"active":""}"
+ onclick="setCategory('${escapeHTML(c).replace(/'/g,"&#39;")}')">${escapeHTML(c)}</button>`
+ ).join("");
+
+ const query=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>
+ (activeCategory==="All"||p.category===activeCategory)&&
+ (p.name+" "+p.desc+" "+p.category).toLowerCase().includes(query)
+ );
+ document.getElementById("products").innerHTML=list.length?list.map(p=>`
+ <article class="product">
+ <div class="photo">${p.image?
+ `<img src="images/${encodeURIComponent(p.image)}" alt="${escapeHTML(p.name)}"
+ onerror="this.style.display='none';this.parentElement.innerHTML='Shahzad Beauty'">`
+ :"Shahzad Beauty"}</div>
+ <div class="info">
+ <div class="cat">${escapeHTML(p.category)}</div>
+ <h3>${escapeHTML(p.name)}</h3>
+ <div class="desc">${escapeHTML(p.desc)}</div>
+ <div class="product-bottom"><span class="price">${money(p.price)}</span>
+ <button class="add" onclick="addToCart('${p.id}')" ${p.qty<1?"disabled":""}>+</button></div>
+ <div class="stock">${p.qty>0?p.qty+" available":"Out of stock"}</div>
+ </div></article>`).join(""):"<p>No products found.</p>";
+}
+function setCategory(c){activeCategory=c;renderProducts()}
+
+function addToCart(id){
+ const p=products.find(x=>x.id===id);
+ if(!p||p.qty<1){alert("Product out of stock.");return}
+ const current=cart[id]||0;
+ if(current>=p.qty){alert("You have added all available stock.");return}
+ cart[id]=current+1;renderCart();
+}
+function changeQty(id,delta){
+ const p=products.find(x=>x.id===id);
+ cart[id]=(cart[id]||0)+delta;
+ if(cart[id]<=0)delete cart[id];
+ if(p&&cart[id]>p.qty)cart[id]=p.qty;
+ renderCart();
+}
+function renderCart(){
+ const entries=Object.entries(cart).filter(([id])=>products.some(p=>p.id===id));
+ const count=entries.reduce((s,[id,q])=>s+q,0);
+ document.getElementById("count").textContent=count;
+ document.getElementById("cartItems").innerHTML=entries.length?
+ entries.map(([id,q])=>{
+ const p=products.find(x=>x.id===id);
+ return `<div class="cart-row"><div><b>${escapeHTML(p.name)}</b><br>
+ ${money(p.price)} each</div><div class="qty">
+ <button onclick="changeQty('${id}',-1)">−</button> ${q}
+ <button onclick="changeQty('${id}',1)">+</button></div></div>`;
+ }).join(""):"<p>Your basket is empty.</p>";
+ const total=entries.reduce((s,[id,q])=>s+products.find(p=>p.id===id).price*q,0);
+ document.getElementById("total").textContent=money(total);
+}
+function toggleCart(){
+ document.getElementById("cart").classList.toggle("open");renderCart();
+}
+function checkout(){
+ const entries=Object.entries(cart);
+ if(!entries.length){alert("Your basket is empty.");return}
+ let lines=entries.map(([id,q])=>{
+ const p=products.find(x=>x.id===id);
+ return `${p.name} x ${q} = ${money(p.price*q)}`;
+ });
+ const total=entries.reduce((s,[id,q])=>s+products.find(p=>p.id===id).price*q,0);
+ const message=`Hello Shahzad Cosmetic! I want to order:\n${lines.join("\n")}\n\nTotal: ${money(total)}\nPlease confirm my order.`;
+ window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_blank");
+}
+
+function openLogin(){
+ document.getElementById("login").classList.add("show");
+ document.getElementById("password").value="";
+ document.getElementById("loginError").textContent="";
+}
+function closeLogin(){document.getElementById("login").classList.remove("show")}
+function verifyLogin(){
+ if(document.getElementById("password").value===ADMIN_PASSWORD){
+ closeLogin();document.getElementById("admin").classList.add("show");renderAdmin();
+ }else document.getElementById("loginError").textContent="Incorrect password.";
+}
+function closeAdmin(){document.getElementById("admin").classList.remove("show")}
+function showTab(id,button){
+ document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+ document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ button.classList.add("active");
+}
+function renderAdmin(){
+ document.getElementById("pCategory").innerHTML=categories.map(c=>
+ `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+ document.getElementById("adminProducts").innerHTML=
+ "<h3 style='margin-top:28px'>Your Products ("+products.length+")</h3>"+
+ products.map(p=>`<div class="listrow"><div><b>${escapeHTML(p.name)}</b><br>
+ ${escapeHTML(p.category)} · ${money(p.price)} · Qty ${p.qty}</div>
+ <div><button class="smallbtn" onclick="editProduct('${p.id}')">Edit</button>
+ <button class="smallbtn danger" onclick="deleteProduct('${p.id}')">Delete</button></div></div>`).join("");
+ document.getElementById("adminCategories").innerHTML=categories.map(c=>
+ `<div class="listrow"><b>${escapeHTML(c)}</b>
+ <button class="smallbtn danger" onclick="deleteCategory('${escapeHTML(c).replace(/'/g,"&#39;")}')">Delete</button></div>`).join("");
+ document.getElementById("waNumber").value=whatsapp;
+}
+function saveProduct(e){
+ e.preventDefault();
+ const id=document.getElementById("editId").value||"p"+Date.now();
+ const p={
+ id,name:document.getElementById("pName").value.trim(),
+ category:document.getElementById("pCategory").value,
+ price:Number(document.getElementById("pPrice").value),
+ qty:Number(document.getElementById("pQty").value),
+ desc:document.getElementById("pDesc").value.trim(),
+ image:document.getElementById("pImage").value.trim()
+ };
+ const index=products.findIndex(x=>x.id===id);
+ if(index>=0)products[index]=p;else products.unshift(p);
+ saveData();resetForm();renderAdmin();renderProducts();
+ alert("Product saved in this browser.");
+}
+function editProduct(id){
+ const p=products.find(x=>x.id===id);if(!p)return;
+ document.getElementById("editId").value=p.id;
+ document.getElementById("pName").value=p.name;
+ document.getElementById("pCategory").value=p.category;
+ document.getElementById("pPrice").value=p.price;
+ document.getElementById("pQty").value=p.qty;
+ document.getElementById("pDesc").value=p.desc;
+ document.getElementById("pImage").value=p.image||"";
+ document.getElementById("formTitle").textContent="Edit Product";
+ document.querySelector(".admin-content").scrollIntoView();
+}
+function deleteProduct(id){
+ if(!confirm("Delete this product?"))return;
+ products=products.filter(p=>p.id!==id);delete cart[id];
+ saveData();renderAdmin();renderProducts();renderCart();
+}
+function resetForm(){
+ document.getElementById("productForm").reset();
+ document.getElementById("editId").value="";
+ document.getElementById("formTitle").textContent="Add New Product";
+}
+function addCategory(e){
+ e.preventDefault();
+ const c=document.getElementById("newCategory").value.trim();
+ if(!categories.some(x=>x.toLowerCase()===c.toLowerCase()))categories.push(c);
+ document.getElementById("newCategory").value="";
+ saveData();renderAdmin();renderProducts();
+}
+function deleteCategory(c){
+ if(products.some(p=>p.category===c)){
+ alert("Move or delete the products in this category first.");return;
+ }
+ if(!confirm("Delete category "+c+"?"))return;
+ categories=categories.filter(x=>x!==c);
+ if(activeCategory===c)activeCategory="All";
+ saveData();renderAdmin();renderProducts();
+}
+function saveSettings(){
+ whatsapp=document.getElementById("waNumber").value.replace(/\D/g,"");
+ localStorage.setItem("sc_whatsapp",whatsapp);
+ alert("Settings saved.");
+}
+function exportData(){
+ const data={categories,products,whatsapp};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);a.download="shahzad-cosmetic-backup.json";
+ a.click();URL.revokeObjectURL(a.href);
+}
+function resetData(){
+ if(!confirm("Reset the store to demo products?"))return;
+ categories=[...DEFAULT_CATEGORIES];
+ products=DEFAULT_PRODUCTS.map(p=>({...p}));
+ saveData();renderAdmin();renderProducts();
+}
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();renderCart();
+</script>
+</body>
+</html>
